@@ -70,6 +70,13 @@ public class CCuenta {
     {
     }
 
+    /**
+     * Constructor
+     * @param nom
+     * @param cue
+     * @param sal
+     * @param tipo 
+     */
     public CCuenta(String nom, String cue, double sal, double tipo)
     {
         nombre =nom;
@@ -77,11 +84,20 @@ public class CCuenta {
         saldo=sal;
     }
 
+    /**
+     * Método que devuelve el saldo actual de la cuenta.
+     * @return el propio saldo.
+     */
     public double estado()
     {
         return getSaldo();
     }
 
+    /**
+     * Método que ingresa el dinero pasado por parámetro en la cuenta.
+     * @param cantidad
+     * @throws Exception 
+     */
     public void ingresar(double cantidad) throws Exception
     {
         if (cantidad<0)
@@ -89,6 +105,11 @@ public class CCuenta {
         setSaldo(getSaldo() + cantidad);
     }
 
+    /**
+     * Método que retira el dinero pasado por parámetro de la cuenta.
+     * @param cantidad
+     * @throws Exception 
+     */
     public void retirar(double cantidad) throws Exception
     {
         if (cantidad <= 0)
@@ -98,15 +119,20 @@ public class CCuenta {
         setSaldo(getSaldo() - cantidad);
     }
     
+    /**
+     * Método que retira e ingresa una cantidad pasada por parámetro en la cuenta1.
+     * @param cuenta1
+     * @param cantidad 
+     */
     public static void operativa_cuenta(CCuenta cuenta1, float cantidad) {
         try {
-            cuenta1.retirar(2300);
+            cuenta1.retirar(cantidad);
         } catch (Exception e) {
             System.out.print("Fallo al retirar");
         }
         try {
             System.out.println("Ingreso en cuenta");
-            cuenta1.ingresar(695);
+            cuenta1.ingresar(cantidad);
         } catch (Exception e) {
             System.out.print("Fallo al ingresar");
         }
